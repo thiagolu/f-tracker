@@ -80,6 +80,7 @@ test:
 #
 production:
   <<: *default
+  url: <%= ENV['DATABASE_URL'] %>
   database: f-tracker_production
-  username: f-tracker
+  username: user
   password: <%= ENV['F-TRACKER_DATABASE_PASSWORD'] %>
