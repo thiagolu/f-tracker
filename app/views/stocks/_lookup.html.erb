@@ -1,22 +1,27 @@
 <div id="stock-lookup">
-	<%= form_tag search_path, remote: true, method: :get, id: 'stock-lookup-form' do %>	
-	<div class="form-group row text-center col-md-10">
-		<div class="col-md-10">
-			<%= text_field_tag :stock, params[:stock], placeholder: 'Input you stock', autofocus: true, class: 'form-control search-box input-lg' %> 
-			<% end %>
-			<hr>
-				<%= submit_tag 'Enviar', class: 'btn btn-lg btn-success' do %>
-				<i class="fa fa-search"></i> Search
-		</div>
-	</div>
-	<% end %>
-	<% if @stock %>
-		<div id="stock-lookup-results" class="well results-block">
-			<strong><%= @stock.ticker%></strong>
-			<%= @stock.name %>
-			<%= @stock.price %>
-		</div>
-	<% end %>
-		<div id="stock-lookup-errors">
-		</div>
+<%= form_tag search_path, remote: true, method: :get, id: 'stock-lookup-form', class: 'stock-lookup-form' do %> 
+  <div class="form-group row text-center col-md-10">
+    <div class="col-md-10">
+      <%= text_field_tag :stock, params[:stock], placeholder: 'Input you stock', autofocus: true, class: 'form-control search-box input-lg' %> 
+      <% end %>
+      <hr>
+    </div>
+      <%= submit_tag 'Enviar', class: 'btn btn-lg btn-success' do %>
+        <i class="fa fa-search"></i> Search
+      <% end %>
+  </div>
+  <div class="row col-md-8">
+  <% if @stock %>
+    <div id="stock-lookup-results" class="well results-block">
+      CODIGO:<strong> <%= @stock.ticker%></strong>
+      <p>EMPRESA: <%= @stock.name %></p>
+      CLOSING PRICE  <%= @stock.price %>
+    </div>
+  <% end %>
+      <%= render 'common/spinner' %>
+      <p>
+          
+    <div id="stock-lookup-errors">
+    </div>
+  </div>
 </div>
