@@ -1,8 +1,14 @@
 <h1>Vamo simbora</h1>
-
-<h2>
-  <%= @bill_description %>
-  <%= @bill_price %>
-</h2>
-
+<%   @bills.each do |bill| %>
+    <div class="list-group">
+      <div class="list-group-item">
+        <h3 class="list-group-item-heading">
+          <%= bill.description %>
+        </h3>
+        <strong class="list-group-item-text">
+          <%= bill.price %>
+        </strong>
+      </div>
+    </div>
+<% end %>
 <%= link_to 'logout', destroy_user_session_path, method: :delete %>
